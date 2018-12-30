@@ -15,7 +15,7 @@ public class myLeadspage extends ProjectMethods {
 	@FindBy(how = How.LINK_TEXT, using = "Create Lead") WebElement elecl;
 	@FindBy(how = How.LINK_TEXT, using = "Merge Leads") WebElement elemerge;
 
-	WebElement CL;
+	
 	@And ("click createlead")
 	public createLeadPage clickcreatelead() {		
 		click( elecl);

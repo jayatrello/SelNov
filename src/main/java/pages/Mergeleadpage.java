@@ -11,27 +11,58 @@ public class Mergeleadpage extends myLeadspage {
 	public Mergeleadpage() {
 		PageFactory.initElements(driver, this);
 	}
-	@FindBy(id = "createLeadForm_companyName") WebElement elecn;
-	@FindBy(id = "createLeadForm_firstName") WebElement elefn;
-	@FindBy(id = "createLeadForm_lastName") WebElement eleln;
-	//@FindBy(path="//img[@alt='Lookup'])[1]")WebElement 
+	
+	@FindBy(xpath="(//img[@alt='Lookup'])[1]") WebElement elefromicon;
+	@FindBy(xpath="(//img[@alt='Lookup'])[2]")WebElement eletoicon;
+	@FindBy(xpath ="//a[text()='Merge']") WebElement elemergebutton;
+	@FindBy(linkText ="Find Leads") WebElement elefindlead;
+
 	@FindBy(how = How.CLASS_NAME, using = "smallSubmit")WebElement elecreateclick;
 	
-	@And ("enter cmpname as (.*)")
-	public Mergeleadpage EnterCompanyName(String data) {		
-		type(elecn, data);		
-		return this;
+	
+	@And ("click from icon")
+	public findleadwindowpage clickficon() {
+		clickWithNoSnap(elefromicon);
+		switchToWindow(1);
+		return new findleadwindowpage() ;
 	}
-	@And ("enter firstname as (.*)")
-	public Mergeleadpage EnterFirstName(String data) {		
-		type(elefn, data);		
-		return this;
+
+ 
+	@And ("click to icon")
+	public  findleadwindowpage clicktoicon()
+	{
+		clickWithNoSnap(eletoicon);
+		switchToWindow(1);
+		return new findleadwindowpage() ;
 	}
-	@And ("enter lastname as (.*)")
-	public Mergeleadpage EnterlastName(String data) {		
-		type(eleln, data);		
-		return this;
-	}
+ 
+	/*@And ("click alert")
+	public Alertpage acceptalert()
+	{
+		acceptAlert();
+		return new Alertpage();
+	}*/
+	
+	
+	 
+	@And ("click mergebutton")
+public Alertpage clickmergebutton()
+{
+	click(elemergebutton);
+	return new Alertpage();
+}
+	
+	@And ("click find lead")
+	
+public findleadpage clickfindlead()
+{
+	click(elefindlead);
+	return new findleadpage();
+}	
+	
+
+	
+	
 			
 		
 	
